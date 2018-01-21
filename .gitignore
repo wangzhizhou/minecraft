@@ -1,0 +1,15 @@
+.DS_Store
+.vscode/
+*.log
+*.log.gz
+minecraft-server/world/
+minecraft-server/logs/
+minecraft-server/world/
+minecraft-server/*.json
+minecraft-client/logs
+minecraft-client/.minecraft/
+data/
+!data/server.properties
+!data/eula.txt
+jdk*.tar.gz
+jdk-*/

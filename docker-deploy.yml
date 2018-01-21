@@ -1,0 +1,20 @@
+version: "3"
+services:
+    minecraft-server:
+        image: zhulongyixian/minecraft-server
+        volumes:
+            - ./data:/data
+        deploy:
+            replicas: 1
+            resources:
+                limits:
+                    cpus: "1.0"
+                    memory: 4096M 
+            restart_policy:
+                condition: on-failure
+        ports:
+            - "25565:25565"
+        networks:
+            - minecraft
+networks:
+    minecraft: 
