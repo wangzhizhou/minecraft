@@ -132,7 +132,7 @@ do
 			echo "Your minecraft server is not running!!!"
 		;;
 		bak)
-			tar zcvf "../world-backup/world-$(date '+%Y%m%d%H%M%S').gzip" world/
+			tar zcvf "../world-backup/world-$(date '+%Y%m%d%H%M%S').tar.gz" world/
 			;;
 		*)
 			usage
