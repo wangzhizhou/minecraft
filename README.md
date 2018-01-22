@@ -1,8 +1,8 @@
-# The Minecraft Game private repo for deploy
+# Minecraft　自建服务
 
-## Minecraft Client Software:
+目前Minecraft服务提供在: `www.jokerhub.cn:25566`, 可以只下载客户端，选择多人模式连接服务地址进入，属于`Joker`的私人服，有感兴趣的可以一起玩。
 
-### 启动器
+## Minecraft 客户端:
 
 [启动侠官网](http://www.qidongxia.com)， 选择精简版下载。
 
@@ -12,57 +12,25 @@
 
 考虑到不同的平台下运行客户端需要的文件不同，所以使用启动器自带的功能选择对应于服务器版本的客户端进行下载。
 
-## Minecraft Server Software:
+## Minecraft 服务器自建:
 
-### 服务端配置说明文档
+如果你想自己搭建服务和好友一起玩耍，可以把本项目布署到云端服务器(公网访问)，或者布署在自己的机器上(局域网访问)。
 
-[server.properties 说明文档](http://minecraft.gamepedia.com/Server.properties)
+目前使用微软官方提供的纯净版服务器软件包`[minecraft-server.1.12.2.jar](https://minecraft.net/zh-hans/download/server)`
 
-### Minecraft Server
+服务器软件需要在java环境下运行，所在需要安装`JDK`环境
 
-目前更新到了`minecraft-server.1.12.2.jar`
+### JDK 安装脚本
 
-### 官方只有购买正版才能使用，注册帐号只能试用
-
-* Windows: [MinecraftInstaller.msi](https://launcher.mojang.com/download/MinecraftInstaller.msi) 、[Minecraft.exe](https://s3.amazonaws.com/Minecraft.Download/launcher/Minecraft.exe)
-* MacOs: [Minecraft.dmg](https://s3.amazonaws.com/Minecraft.Download/launcher/Minecraft.dmg) 
-* GNU/Linux: [Minecraft.jar](https://s3.amazonaws.com/Minecraft.Download/launcher/Minecraft.jar)
-
-### 当前目录结构
-
-```
-minecraft/
-.
-├── Dockerfile
-├── README.md
-├── doc
-│   ├── docs
-│   └── mkdocs.yml
-├── docker-deploy.yml
-├── install-jdk
-├── minecraft-client
-│   └── MCLC.exe
-├── minecraft-server
-│   ├── eula.txt
-│   ├── minecraft_server.1.12.2.jar
-│   ├── server
-│   ├── server.properties
-│   └── world
-└── world-backup
-    └── world-20180121030321.tar.gz
-
-6 directories, 11 files
-```
-
-# shell 脚本使用说明
-
-- 如果你是Linux平台，使用`apt-get`的包管理器，可以使用`/minecraft/install-jdk`脚本来安装jdk到你的电脑
+ 如果你是Linux平台，使用`apt-get`的包管理器，可以使用`/minecraft/install-jdk`脚本来安装jdk到你的电脑
 
 ```
 $ source minecraft/install-jdk
 ```
 
-- `/minecraft/minecraft-server/server` 该脚本用来启动` Minecraft SMP`服务器, 需要进入到`minecraft-server`目录下面运行
+### Minecraft 服务器管理脚本
+
+`/minecraft/minecraft-server/server` 该脚本用来管理` Minecraft SMP`服务器, 需要进入到`minecraft-server`目录下面运行，　使用命令`./server start`即可启动服务器，本项目minecraft服务端口设定为`25566`
 
 ```
 Usage:
@@ -111,3 +79,7 @@ Example:
       ./server resume
 ```
 
+### 服务器配置相关
+
+｀eula.txt｀文件需要改为：｀**eula=TRUE**`, 也即同意`EULA`用户使用协议
+[server.properties 说明文档](http://minecraft.gamepedia.com/Server.properties)
