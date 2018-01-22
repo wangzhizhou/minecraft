@@ -24,7 +24,7 @@
 
 ### 官方只有购买正版才能使用，注册帐号只能试用
 
-* Windows: [MinecraftInstaller.msi](https://launcher.mojang.com/download/MinecraftInstaller.msi) | [Minecraft.exe](https://s3.amazonaws.com/Minecraft.Download/launcher/Minecraft.exe)
+* Windows: [MinecraftInstaller.msi](https://launcher.mojang.com/download/MinecraftInstaller.msi) 、[Minecraft.exe](https://s3.amazonaws.com/Minecraft.Download/launcher/Minecraft.exe)
 * MacOs: [Minecraft.dmg](https://s3.amazonaws.com/Minecraft.Download/launcher/Minecraft.dmg) 
 * GNU/Linux: [Minecraft.jar](https://s3.amazonaws.com/Minecraft.Download/launcher/Minecraft.jar)
 
