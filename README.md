@@ -32,25 +32,26 @@
 
 ```
 minecraft/
+.
 ├── Dockerfile
 ├── README.md
-├── data
-│   ├── eula.txt
-│   └── server.properties
 ├── doc
-│   ├── docs
-│   └── mkdocs.yml
+│   ├── docs
+│   └── mkdocs.yml
 ├── docker-deploy.yml
 ├── install-jdk
 ├── minecraft-client
-│   └── MCLC.exe
+│   └── MCLC.exe
 ├── minecraft-server
-│   ├── eula.txt
-│   ├── minecraft_server.1.12.2.jar
-│   ├── server.properties
-│   └── server.sh
+│   ├── eula.txt
+│   ├── minecraft_server.1.12.2.jar
+│   ├── server
+│   ├── server.properties
+│   └── world
 └── world-backup
-    └── world-20180121030321.gzip
+    └── world-20180121030321.tar.gz
+
+6 directories, 11 files
 ```
 
 # shell 脚本使用说明
@@ -61,11 +62,11 @@ minecraft/
 $ source minecraft/install-jdk
 ```
 
-- `/minecraft/minecraft-server/server.sh` 该脚本用来启动` Minecraft SMP`服务器, 需要进入到`minecraft-server`目录下面运行
+- `/minecraft/minecraft-server/server` 该脚本用来启动` Minecraft SMP`服务器, 需要进入到`minecraft-server`目录下面运行
 
 ```
 Usage:
-  ./server.sh [ -o | -v version | -m jvm_run_memory ] [ test | start | stop | status | bak ]
+  ./server [ -o | -v version | -m jvm_run_memory ] [ test | start | stop | status | archive | resume ]
 
 Options:
 
@@ -75,43 +76,23 @@ Options:
 
 Arguments:
 
-  test   - Start the pure minecraft server in test mode
-  start  - start the pure minecraft server(with o, you can use the JVM optimization options run se
-rver)
-           if the server port has been used by other process, you can use 'lsof -i :portNum' to ch
-eck
-  stop   - stop the pure minecraft server
-  status - check the minecraft server run status
-  bak    - backup the world directory to gzip files
-[joker@jokerAtHome ~/Desktop/minecraft/minecraft-server]
-$ ./server.sh
-
-Usage:
-  ./server.sh [ -o | -v version | -m jvm_run_memory ] [ test | start | stop | status | bak ]
-
-Options:
-
-  -o                  - run server with jvm optimize parameters
-  -v version          - run specified version server
-  -m jvm_run_memory   - run server with specified jvm run memeory alloced
-
-Arguments:
-
-  test   - Start the pure minecraft server in test mode
-  start  - start the pure minecraft server(with o, you can use the JVM optimization options run server)
-           if the server port has been used by other process, you can use 'lsof -i :portNum' to check
-  stop   - stop the pure minecraft server
-  status - check the minecraft server run status
-  bak    - backup the world directory to gzip files
+  test    - Start the pure minecraft server in test mode
+  start   - start the pure minecraft server(with o, you can use the JVM optimization options run server)
+            if the server port has been used by other process, you can use 'lsof -i :portNum' to check
+  stop    - stop the pure minecraft server
+  status  - check the minecraft server run status
+  archive - archive the world directory to minecraft/world-backup/*.tar.gz files
+  resume  - resume the world archive file to the game world directory
 
 Example:
 
   Start the Server:
 
-      ./server.sh -o -v 1.12.2 -m 1024M start
+      ./server -o -v 1.12.2 -m 1024M start
 
   Stop the Server:
-      ./server.sh stop
+
+      ./server stop
 
   Check the server status:
 
@@ -120,5 +101,13 @@ Example:
   Run the Server block the shell:
 
       ./server -o -v 1.12.2 -m 2048M test
+
+  Archive the world directory to minecraft/world-backup/ directory:
+
+      ./server archive
+
+  Resume the world archive file to minecraft/minecraft-server/world directory:
+
+      ./server resume
 ```
 

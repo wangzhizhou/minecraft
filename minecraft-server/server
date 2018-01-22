@@ -5,7 +5,7 @@ function usage()
 
                 echo ""
                 echo "Usage:"
-                echo "  ./server.sh [ -o | -v version | -m jvm_run_memory ] [ test | start | stop | status | bak ]"
+                echo "  ./server [ -o | -v version | -m jvm_run_memory ] [ test | start | stop | status | archive | resume ]"
                 echo ""
 				echo "Options:"
 				echo ""
@@ -15,21 +15,23 @@ function usage()
 				echo ""
 				echo "Arguments:"
 				echo ""
-                echo "  test   - Start the pure minecraft server in test mode"
-				echo "  start  - start the pure minecraft server(with o, you can use the JVM optimization options run server)"
-				echo "           if the server port has been used by other process, you can use 'lsof -i :portNum' to check"
-				echo "  stop   - stop the pure minecraft server"
-				echo "  status - check the minecraft server run status"
-				echo "  bak    - backup the world directory to gzip files"
+                echo "  test    - Start the pure minecraft server in test mode"
+				echo "  start   - start the pure minecraft server(with o, you can use the JVM optimization options run server)"
+				echo "            if the server port has been used by other process, you can use 'lsof -i :portNum' to check"
+				echo "  stop    - stop the pure minecraft server"
+				echo "  status  - check the minecraft server run status"
+				echo "  archive - archive the world directory to minecraft/world-backup/*.tar.gz files"
+				echo "  resume  - resume the world archive file to the game world directory"
                 echo ""
 				echo "Example:"
 				echo ""
 				echo "  Start the Server:"
 				echo ""
-				echo "      ./server.sh -o -v 1.12.2 -m 1024M start"
+				echo "      ./server -o -v 1.12.2 -m 1024M start"
 				echo ""
 				echo "  Stop the Server:"
-				echo "      ./server.sh stop"
+				echo ""
+				echo "      ./server stop"
 				echo ""
 				echo "  Check the server status:"
 				echo ""
@@ -39,7 +41,57 @@ function usage()
 				echo ""
 				echo "      ./server -o -v 1.12.2 -m 2048M test"
 				echo ""
+				echo "  Archive the world directory to minecraft/world-backup/ directory:"
+				echo ""
+				echo "      ./server archive"
+				echo ""
+				echo "  Resume the world archive file to minecraft/minecraft-server/world directory:"
+				echo ""
+				echo "      ./server resume"
+				echo ""
                 exit 1
+}
+
+function resume()
+{
+	PS3="Choose the world archive file to resume:"
+	ARCHIVE_DIR="../world-backup"
+	GAME_WORLD_DIR="world/"
+	select option in `basename $ARCHIVE_DIR/*`
+	do
+		if [ -z $option ]
+		then
+			echo choose not valide archive file
+		else
+			WORLD_FILE="$ARCHIVE_DIR/$option"
+			if [ -f $WORLD_FILE ]
+			then
+				if [ -d $GAME_WORLD_DIR ]
+				then
+					echo "There has been a game world directory $GAME_WORLD_DIR"
+					read -p "Do you want overwrite it [y/n]: " answer
+					case "$answer" in
+						Y|y)
+							rm -rf $GAME_WORLD_DIR
+							tar zxf $WORLD_FILE
+							echo "$WORLD_FILE has been decompress into current directory and it should been named \'world\'"
+							;;
+						N|n)
+							echo "Maybe you should archive current world directory first!"
+							;;
+						*)
+							;;
+					esac 
+				else
+					tar zxf $WORLD_FILE
+					echo "$WORLD_FILE has been decompress into current directory and it should been named 'world'"
+				fi
+			else
+				echo "$option　archive file is not exist!"
+			fi
+			break
+		fi
+	done
 }
 
 SERVER_VERSION=1.12.2
@@ -131,8 +183,11 @@ do
 
 			echo "Your minecraft server is not running!!!"
 		;;
-		bak)
+		archive)
 			tar zcvf "../world-backup/world-$(date '+%Y%m%d%H%M%S').tar.gz" world/
+			;;
+		resume)
+			resume
 			;;
 		*)
 			usage
