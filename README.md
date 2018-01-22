@@ -81,5 +81,5 @@ Example:
 
 ### 服务器配置相关
 
-｀eula.txt｀文件需要改为：｀**eula=TRUE**`, 也即同意`EULA`用户使用协议
+`eula.txt`文件需要改为：`**eula=TRUE**`, 也即同意`EULA`用户使用协议
 [server.properties 说明文档](http://minecraft.gamepedia.com/Server.properties)
