@@ -1,6 +1,6 @@
 # Minecraft　自建服务
 
-目前Minecraft服务提供在: `www.jokerhub.cn:25566`, 可以只下载客户端，选择多人模式连接服务地址进入，属于`Joker`的私人服，有感兴趣的可以一起玩。
+目前Minecraft服务提供在: `jokerhub.cn:25566`, 可以只下载客户端，选择多人模式连接服务地址进入，属于`Joker`的私人服，有感兴趣的可以一起玩。
 
 ## Minecraft 客户端:
 
