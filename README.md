@@ -1,6 +1,6 @@
 # Minecraft　自建服务
 
-目前Minecraft服务提供在: `jokerhub.cn:25566`, 可以只下载客户端，选择多人模式连接服务地址进入，属于`Joker`的私人服，有感兴趣的可以一起玩。
+目前Minecraft服务提供在: `jokerhub.cn:25566`, 可以只下载客户端，选择多人模式连接服务地址进入，属于`Joker`的私人服，有感兴趣的可以一起玩。
 
 ## Minecraft 客户端:
 
@@ -30,7 +30,7 @@ $ source minecraft/install-jdk
 
 ### Minecraft 服务器管理脚本
 
-`/minecraft/minecraft-server/server` 该脚本用来管理` Minecraft SMP`服务器, 需要进入到`minecraft-server`目录下面运行，　使用命令`./server start`即可启动服务器，本项目minecraft服务端口设定为`25566`
+`/minecraft/minecraft-server/server` 该脚本用来管理` Minecraft SMP`服务器, 需要进入到`minecraft-server`目录下面运行，使用命令`./server start`即可启动服务器，本项目minecraft服务端口设定为`25566`
 
 ```
 Usage:
