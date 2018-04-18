@@ -16,7 +16,7 @@
 
 如果你想自己搭建服务和好友一起玩耍，可以把本项目布署到云端服务器(公网访问)，或者布署在自己的机器上(局域网访问)。
 
-目前使用微软官方提供的纯净版服务器软件包`[minecraft-server.1.12.2.jar](https://minecraft.net/zh-hans/download/server)`
+目前使用微软官方提供的纯净版服务器软件包[minecraft-server.1.12.2.jar](https://minecraft.net/zh-hans/download/server)
 
 服务器软件需要在java环境下运行，所在需要安装`JDK`环境
 
