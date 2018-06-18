@@ -13,3 +13,4 @@ data/
 !data/eula.txt
 jdk*.tar.gz
 jdk-*/
+venv/
