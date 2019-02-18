@@ -94,14 +94,9 @@ function resume()
 	done
 }
 
-SERVER_VERSION=1.12.2
+SERVER_VERSION=1.13.2
 
-RUN_MEM="1024M"
-
-OPT=""
-if [ `uname -m` = "x86_64" ]; then
-    OPT="-d64"
-fi
+RUN_MEM="512M"
 
 while getopts :ov:m: opt
 do 
@@ -135,7 +130,7 @@ then
 	exit 1;
 fi
 
-RUN_CMD="java $JVM_OPTS -Xmx$RUN_MEM -Xms$RUN_MEM $OPT -jar $PURE_JAR nogui"
+RUN_CMD="java $JVM_OPTS -Xmx$RUN_MEM -Xms$RUN_MEM -jar $PURE_JAR nogui"
 
 if [ $# -ne 1 ]
 then

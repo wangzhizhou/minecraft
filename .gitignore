@@ -5,6 +5,7 @@
 minecraft-server/world/
 minecraft-server/logs/
 minecraft-server/world/
+minecraft-server/crash-reports/
 minecraft-server/*.json
 minecraft-client/logs
 minecraft-client/.minecraft/
