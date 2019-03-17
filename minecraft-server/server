@@ -97,6 +97,7 @@ function resume()
 SERVER_VERSION=1.13.2
 
 RUN_MEM="512M"
+RUN_MEM_MAX="2048M"
 
 while getopts :ov:m: opt
 do 
@@ -130,7 +131,7 @@ then
 	exit 1;
 fi
 
-RUN_CMD="java $JVM_OPTS -Xmx$RUN_MEM -Xms$RUN_MEM -jar $PURE_JAR nogui"
+RUN_CMD="java $JVM_OPTS -Xmx$RUN_MEM_MAX -Xms$RUN_MEM -jar $PURE_JAR nogui"
 
 if [ $# -ne 1 ]
 then
